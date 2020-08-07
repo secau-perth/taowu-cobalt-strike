@@ -32,7 +32,6 @@ menu "Information Discovery" {
             drow_checkbox($dialog, "workstation", "Uptime", "");
             drow_checkbox($dialog, "startup", "Startup", "");
             drow_checkbox($dialog, "qwinsta", "Online User", "");
-            drow_checkbox($dialog, "GetIP", "Show IP", "");
             dbutton_action($dialog, "RUN");
             dialog_show($dialog);
         }
@@ -219,12 +218,6 @@ sub qwinsta{
     bshell($bid, "query user || qwinsta");
 }
 
-sub GetIP{
-    btask($bid, "########################", "");
-    btask($bid, "##  IP for LAN & WAN  ##", "");
-	btask($bid, "########################", "");
-    bexecute_assembly($bid, script_resource("/script/Ladon.exe"), "GetIP");
-}
 
 
 ######################################################################################################################
