@@ -21,7 +21,7 @@ sub crack {
 
         bupload($bid, script_resource("/script/crack.exe"));
     }
-                item "Run crack.ext"{
+                item "Run crack.exe"{
                     $bid = $1['@'];
                     $Dialog = dialog("Run Crack",%(ip => "192.168.1.1/24，192.168.1-255，192.168.1.1", port => "3389", username => "filename list or username", password => "filename list or password", type => "ssh", thread => "Default threads = 100",bid => $bid),&crack_run);
                     dialog_description($Dialog, "Support ftp，ssh，smb，mssql，mysql, postgresql. Result will save in current_folder/result.txt");
