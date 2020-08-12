@@ -125,7 +125,7 @@ sub sharpwmi_run{
         }
 sub SharpDomainSpray {
 	$arg = join(' ', @($3['type'],$3['content']));
-	bexecute_assembly($bid, script_resource("/script/SharpDomainSpray/SharpDomainSpray.exe"), $arg);
+	bexecute_assembly($bid, script_resource("/script/SharpDomainSpray.exe"), $arg);
 } 
 
 		 menu "Mimikatz-DCSync" {
