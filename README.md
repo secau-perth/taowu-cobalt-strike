@@ -1,5 +1,6 @@
 # TaoWu
 ![](img/timg.jpg)
+# For communication and learning purposes only, please do not use it for illegal purposes！
 
 ##TaoWu(檮杌) is a CobaltStrike toolkit.
 
