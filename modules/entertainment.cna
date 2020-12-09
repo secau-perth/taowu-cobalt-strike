@@ -32,25 +32,13 @@ sub Send {
             }, @ids => $1));
         }
 
-                item "Black Screen"{
-                    bshell($1,"taskkill /F /IM explorer.exe");
-                }
                 item "Lock Screen"{
                     bshell($1,"rundll32.exe user32.dll,LockWorkStation");
                 }
                 item "Open Screen"{
                     brun($1, "explorer.exe");
                 }
-			    item "Restart" {
-             prompt_text("ARE U SURE?", "", lambda({
-            bshell(@ids, "shutdown -r -t 0");
-        }, @ids => $1));
-    }	
-			    item "Shutdown" {
-             prompt_text("ARE U SURE?", "", lambda({
-            bshell(@ids, "shutdown -s -t 0");
-        }, @ids => $1));
-    }	
+
 
 			item "Record Mic" {
 			$bid = $1['@'];
